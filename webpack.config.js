@@ -125,8 +125,11 @@ if (PRODUCTION) {
 } else {
   config.plugins.push(
     new WebpackCopyPlugin([{
-      ignore: '.DS*',
-      from: '../qlik'
+      from: '../qlik/qlik-styles.css',
+      to: 'asset/css/qlik-styles.css'
+    }, {
+      from: '../qlik/qlik.js',
+      to: 'asset/js/qlik.js'
     }])
   )
 }

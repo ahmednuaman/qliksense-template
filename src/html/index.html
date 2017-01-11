@@ -16,7 +16,7 @@
   </head>
   <body>
     
-    <script src="<%= htmlWebpackPlugin.options.production ? '../../resources/assets/external/requirejs' : 'asset/js' %>/require.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.production ? '../../resources/assets/external/requirejs' : 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2' %>/require.js"></script>
     <script src="<%= htmlWebpackPlugin.files.chunks['asset/js/app.js'].entry %>" defer></script>
   </body>
 </html>
