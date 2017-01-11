@@ -21,7 +21,8 @@ let config = {
   context: src,
   cache: true,
   entry: {
-    [`${PRODUCTION ? PKG.name : 'script'}.js`]: './js/app.js'
+    'asset/css/app.css': './scss/app',
+    'asset/js/app.js': './js/app'
   },
   output: {
     filename: '[name]',
@@ -32,23 +33,17 @@ let config = {
   devtool: 'inline-source-map',
   module: {
     loaders: [{
-      test: /\.woff2?/,
-      loader: 'url?limit=10000&mimetype=application/font-woff&name=/asset/font/[name].[ext]?[hash]'
-    }, {
-      test: /\.ttf/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream&name=/asset/font/[name].[ext]?[hash]'
-    }, {
-      test: /\.eot/,
-      loader: 'url?limit=10000&mimetype=application/vnd.ms-fontobject&name=/asset/font/[name].[ext]?[hash]'
-    }, {
       test: /\.svg/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml&name=/asset/font/[name].[ext]?[hash]'
+      loader: 'url?limit=10000&mimetype=image/svg+xml&name=/asset/img/[name].[ext]?[hash]'
     }, {
-      test: /img\/.+\.(jpe?g|png|gif)$/,
+      test: /img\/.+\.(jpg|png|gif)$/,
       loader: 'url?limit=1000&name=/asset/img/[name].[ext]?[hash]!img?progressive=true'
     }, {
-      test: /\.html$/,
-      loader: 'html'
+      test: /\.pug$/,
+      loader: 'pug',
+      query: {
+        pretty: !PRODUCTION
+      }
     }, {
       test: /\.json$/,
       loader: 'json'
@@ -57,14 +52,17 @@ let config = {
       exclude: [
         /node_modules/
       ],
-      loader: 'babel?compact=false'
+      loader: 'babel',
+      query: {
+        compact: false
+      }
     }, {
       test: /\.scss$/,
-      loader: WebpackExtractTextPlugin.extract('style', 'css!less')
+      loader: WebpackExtractTextPlugin.extract('style', 'css!sass')
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.scss', '.html'],
+    extensions: ['', '.js', '.json', '.scss', '.pug', '.jpg', '.png', '.gif', '.svg'],
     alias: {
       img: `${src}/img/`,
       'js/qlik': `${src}/qlik/qlik`
@@ -82,17 +80,16 @@ let config = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
-    new WebpackExtractTextPlugin(OUTPUT_FILENAME, {
+    new WebpackExtractTextPlugin('[name]', {
       allChunks: true
     }),
     new WebpackHTMLPlugin({
       inject: false,
       hash: true,
-      template: 'html/index',
+      template: 'pug/index',
       title: PKG.name,
       production: PRODUCTION
     }),
-    new WebpackMd5HashPlugin(),
     new WebpackCopyPlugin([{
       from: '../qlik/template.qext',
       to: `${PKG.name}.qext`
