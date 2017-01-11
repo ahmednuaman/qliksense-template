@@ -21,7 +21,7 @@ let config = {
   context: src,
   cache: true,
   entry: {
-    'asset/css/app.css': './scss/app',
+    [`${PKG.name}.css`]: './scss/app',
     [`${PKG.name}.js`]: './js/app'
   },
   output: {
@@ -33,22 +33,22 @@ let config = {
   module: {
     loaders: [{
       test: /\.woff2?/,
-      loader: 'file?limit=1000&mimetype=application/font-woff&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/font-woff&name=[name].[ext]'
     }, {
       test: /\.ttf/,
-      loader: 'file?limit=1000&mimetype=application/octet-stream&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/octet-stream&name=[name].[ext]'
     }, {
       test: /\.otf/,
-      loader: 'file?limit=1000&mimetype=application/octet-stream&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/octet-stream&name=[name].[ext]'
     }, {
       test: /\.eot/,
-      loader: 'file?limit=1000&mimetype=application/vnd.ms-fontobject&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/vnd.ms-fontobject&name=[name].[ext]'
     }, {
       test: /\.svg/,
-      loader: 'file?limit=1000&mimetype=image/svg+xml&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=image/svg+xml&name=[name].[ext]'
     }, {
       test: /img\/.+\.(jpg|png|gif|svg)$/,
-      loader: 'file?limit=1000&publicPath=../img/&outputPath=asset/img/&name=[name].[ext]?[hash]!img?progressive=true'
+      loader: 'file?limit=1000&name=[name].[ext]!img?progressive=true'
     }, {
       test: /\.pug$/,
       loader: 'pug',
@@ -101,6 +101,7 @@ let config = {
       template: 'pug/index',
       title: PKG.name,
       production: PRODUCTION,
+      css: `${PKG.name}.css`,
       js: `${PKG.name}.js`
     }),
     new WebpackCopyPlugin([{
