@@ -22,7 +22,7 @@ let config = {
   cache: true,
   entry: {
     'asset/css/app.css': './scss/app',
-    'asset/js/app.js': './js/app'
+    [`${PKG.name}.js`]: './js/app'
   },
   output: {
     filename: '[name]',
@@ -33,6 +33,15 @@ let config = {
   devtool: 'inline-source-map',
   module: {
     loaders: [{
+      test: /\.woff2?/,
+      loader: 'url?limit=10000&mimetype=application/font-woff&name=/asset/font/[name].[ext]?[hash]'
+    }, {
+      test: /\.ttf/,
+      loader: 'url?limit=10000&mimetype=application/octet-stream&name=/asset/font/[name].[ext]?[hash]'
+    }, {
+      test: /\.eot/,
+      loader: 'file?name=/asset/font/[name].[ext]?[hash]'
+    }, {
       test: /\.svg/,
       loader: 'url?limit=10000&mimetype=image/svg+xml&name=/asset/img/[name].[ext]?[hash]'
     }, {
@@ -86,9 +95,11 @@ let config = {
     new WebpackHTMLPlugin({
       inject: false,
       hash: true,
+      filename: `${PKG.name}.html`,
       template: 'pug/index',
       title: PKG.name,
-      production: PRODUCTION
+      production: PRODUCTION,
+      js: `${PKG.name}.js`
     }),
     new WebpackCopyPlugin([{
       from: '../qlik/template.qext',

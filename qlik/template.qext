@@ -1,9 +1,13 @@
 {
-  "name": "qliksense-extension",
+  "name": "qliksense-template",
   "description": "A simple boilerplate for writing Qlik Sense extensions in Javascript",
-  "icon": "extension",
+  "icon": "line-chart",
   "preview": "preview.png",
-  "type": "visualization",
+  "type": "mashup-template",
   "version": "1.0.0",
-  "author": "Ahmed Nuaman (ahmed@ahmednuaman.com)"
+  "author": "Ahmed Nuaman (ahmed@ahmednuaman.com)",
+  "allowPosition": false,
+  "dependencies": {
+    "qlik-sense" : ">=1.0.x"
+  }
 }
