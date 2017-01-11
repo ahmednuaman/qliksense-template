@@ -33,19 +33,22 @@ let config = {
   module: {
     loaders: [{
       test: /\.woff2?/,
-      loader: 'url?mimetype=application/font-woff&name=asset/font/[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/font-woff&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
     }, {
       test: /\.ttf/,
-      loader: 'url?mimetype=application/octet-stream&name=asset/font/[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/octet-stream&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
+    }, {
+      test: /\.otf/,
+      loader: 'file?limit=1000&mimetype=application/octet-stream&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
     }, {
       test: /\.eot/,
-      loader: 'url?mimetype=application/vnd.ms-fontobject&name=asset/font/[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=application/vnd.ms-fontobject&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
     }, {
       test: /\.svg/,
-      loader: 'url?mimetype=image/svg+xml&name=asset/font/[name].[ext]?[hash]'
+      loader: 'file?limit=1000&mimetype=image/svg+xml&publicPath=../font/&outputPath=asset/font/&name=[name].[ext]?[hash]'
     }, {
       test: /img\/.+\.(jpg|png|gif|svg)$/,
-      loader: 'url?limit=1000&name=asset/img/[name].[ext]?[hash]!img?progressive=true'
+      loader: 'file?limit=1000&publicPath=../img/&outputPath=asset/img/&name=[name].[ext]?[hash]!img?progressive=true'
     }, {
       test: /\.pug$/,
       loader: 'pug',
