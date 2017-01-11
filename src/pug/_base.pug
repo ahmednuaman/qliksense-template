@@ -24,4 +24,4 @@ html(lang='en')
 
     block body
 
-    script(src=(htmlWebpackPlugin.options.production ? '${name}' : htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.js].entry) defer)
+    script(src=(htmlWebpackPlugin.options.production ? '${name}.js' : htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.js].entry) defer)
