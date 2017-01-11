@@ -27,26 +27,25 @@ let config = {
   output: {
     filename: '[name]',
     publicPath: '',
-    path: path.resolve(CWD, BUILD_DIR),
-    libraryTarget: 'amd'
+    path: path.resolve(CWD, BUILD_DIR)
   },
   devtool: 'inline-source-map',
   module: {
     loaders: [{
       test: /\.woff2?/,
-      loader: 'url?limit=10000&mimetype=application/font-woff&name=/asset/font/[name].[ext]?[hash]'
+      loader: 'url?mimetype=application/font-woff&name=asset/font/[name].[ext]?[hash]'
     }, {
       test: /\.ttf/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream&name=/asset/font/[name].[ext]?[hash]'
+      loader: 'url?mimetype=application/octet-stream&name=asset/font/[name].[ext]?[hash]'
     }, {
       test: /\.eot/,
-      loader: 'file?name=/asset/font/[name].[ext]?[hash]'
+      loader: 'url?mimetype=application/vnd.ms-fontobject&name=asset/font/[name].[ext]?[hash]'
     }, {
       test: /\.svg/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml&name=/asset/img/[name].[ext]?[hash]'
+      loader: 'url?mimetype=image/svg+xml&name=asset/font/[name].[ext]?[hash]'
     }, {
-      test: /img\/.+\.(jpg|png|gif)$/,
-      loader: 'url?limit=1000&name=/asset/img/[name].[ext]?[hash]!img?progressive=true'
+      test: /img\/.+\.(jpg|png|gif|svg)$/,
+      loader: 'url?limit=1000&name=asset/img/[name].[ext]?[hash]!img?progressive=true'
     }, {
       test: /\.pug$/,
       loader: 'pug',

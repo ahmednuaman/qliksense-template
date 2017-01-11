@@ -2,6 +2,7 @@
 
 const CWD = process.cwd()
 const DIR = 'build'
+const PKG = require('./package')
 
 const path = require('path')
 const webpack = require('webpack')
@@ -16,6 +17,7 @@ require('browser-sync')
   .init({
     server: {
       baseDir: serverPath,
+      index: `${PKG.name}.html`,
       middleware: [
         webpackDevMiddleware(bundler, {
           publicPath: webpackConfig.output.publicPath,
@@ -30,5 +32,5 @@ require('browser-sync')
       `${DIR}/*.html`,
       `${DIR}/*.js`
     ],
-    open: 'external'
+    open: 'local'
   }, () => console.log('Browsersync is running...'))

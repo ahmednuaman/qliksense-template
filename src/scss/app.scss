@@ -1,9 +1,9 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
-@import '~bootswatch/paper/variables';
+@import '~bootswatch/lumen/variables';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-@import '~bootswatch/paper/bootswatch';
+@import '~bootswatch/lumen/bootswatch';
 
 body { 
   padding-top: 70px; 
