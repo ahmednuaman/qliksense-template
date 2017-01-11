@@ -1,7 +1,7 @@
 {
-  "name": "qliksense-extension",
+  "name": "qliksense-template",
   "version": "1.0.0",
-  "description": "A simple boilerplate for writing Qlik Sense extensions in Javascript",
+  "description": "A simple boilerplate for writing Qlik Sense templates in Javascript",
   "scripts": {
     "browser-sync": "node ./browser-sync.js",
     "build": "concurrently \"npm test\" \"npm run webpack\"",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmednuaman/qliksense-extension.git"
+    "url": "git+https://github.com/ahmednuaman/qliksense-template.git"
   },
   "keywords": [
     "qliksense"
@@ -23,9 +23,9 @@
   "author": "Ahmed Nuaman (ahmed@ahmednuaman.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ahmednuaman/qliksense-extension/issues"
+    "url": "https://github.com/ahmednuaman/qliksense-template/issues"
   },
-  "homepage": "https://github.com/ahmednuaman/qliksense-extension#readme",
+  "homepage": "https://github.com/ahmednuaman/qliksense-template#readme",
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",

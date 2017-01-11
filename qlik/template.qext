@@ -1,6 +1,6 @@
 {
   "name": "qliksense-template",
-  "description": "A simple boilerplate for writing Qlik Sense extensions in Javascript",
+  "description": "A simple boilerplate for writing Qlik Sense templates in Javascript",
   "icon": "line-chart",
   "preview": "preview.png",
   "type": "mashup-template",
