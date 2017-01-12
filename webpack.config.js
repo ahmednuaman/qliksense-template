@@ -22,7 +22,7 @@ let config = {
   cache: true,
   entry: {
     [`${PKG.name}.css`]: './scss/app',
-    [`${PKG.name}.js`]: './js/app'
+    [`${PKG.name}.js`]: ['./js/workbench', './js/app']
   },
   output: {
     name: PKG.name,
@@ -78,17 +78,11 @@ let config = {
       img: `${src}/img/`
     }
   },
-  externals: [{
-    'angular': {
-      amd: 'angular'
-    },
-    'jquery': {
-      amd: 'jquery'
-    },
-    'js/qlik': {
-      amd: '/resources/js/qlik.js'
-    }
-  }],
+  externals: [
+    'angular',
+    'jquery',
+    'js/qlik'
+  ],
   plugins: [
     new WebpackCleanPlugin([BUILD_DIR, ZIP_FILE]),
     new webpack.DefinePlugin({
@@ -118,11 +112,10 @@ let config = {
 
 if (PRODUCTION) {
   config.plugins.push(
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   }
-    // }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: false,
+      mangle: false
+    }),
     new WebpackStatsWriterPlugin({
       filename: 'wbfolder.wbl',
       fields: null,

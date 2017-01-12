@@ -13,3 +13,9 @@ body {
 a {
   cursor: pointer;
 }
+
+.qvplaceholder,
+.qvdropzone,
+.qvobject {
+  min-height: 200px;
+}

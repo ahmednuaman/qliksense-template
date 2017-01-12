@@ -28,4 +28,15 @@ html(lang='en')
 
     script(src=(htmlWebpackPlugin.options.production ? '/resources/assets/external/requirejs' : 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2') + '/require.js')
     script.
+      const config = {
+        host: window.location.hostname,
+        prefix: '/',
+        port: window.location.port,
+        isSecure: window.location.protocol === 'https:'
+      }
+
+      require.config({
+        baseUrl: (config.isSecure ? 'https://' : 'http://') + config.host + (config.port ? ':' + config.port : '') + config.prefix + 'resources'
+      })
+
       require(['#{htmlWebpackPlugin.options.production ? '${name}.js' : htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.js].entry}'])

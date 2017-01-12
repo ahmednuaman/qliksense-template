@@ -1,4 +1,5 @@
-extends _base.pug
+extends _base
+include ~pug-bootstrap/components/icons
 
 block menu
   li
@@ -7,5 +8,7 @@ block menu
 block body
   .container
     .row
-      #QV01.col-xs-12.col-md-6.qvplaceholder [Stick stuff here] #[i.glyphicon.glyphicon-asterisk]
-      #QV02.col-xs-12.col-md-6.qvplaceholder [Stick stuff here]
+      .col-xs-12.col-md-6
+        #QV01.qvplaceholder
+      .col-xs-12.col-md-6
+        #QV02.qvplaceholder
