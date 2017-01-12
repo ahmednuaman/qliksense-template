@@ -1,37 +1,4 @@
 @font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  src: url('~source-sans-pro/WOFF/OTF/SourceSansPro-Light.otf.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 400;
-  font-style: normal;
-  font-stretch: normal;
-  src: url('~source-sans-pro/WOFF/OTF/SourceSansPro-Regular.otf.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 400;
-  font-style: italic;
-  font-stretch: normal;
-  src: url('~source-sans-pro/WOFF/OTF/SourceSansPro-It.otf.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 700;
-  font-style: normal;
-  font-stretch: normal;
-  src: url('~source-sans-pro/WOFF/OTF/SourceSansPro-Bold.otf.woff') format('woff');
-}
-
-@font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('~bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2') format('woff2'),
-       url('~bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff');
+  src: url('~bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff');
 }

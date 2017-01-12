@@ -135,6 +135,12 @@ if (PRODUCTION) {
       from: '../qlik/qlik-styles.css',
       to: 'asset/css/qlik-styles.css'
     }, {
+      from: '../qlik/qlikui.css',
+      to: 'asset/css/qlikui.css'
+    }, {
+      from: '../qlik/client.css',
+      to: 'asset/css/client.css'
+    }, {
       from: '../qlik/qlik.js',
       to: 'asset/js/qlik.js'
     }])

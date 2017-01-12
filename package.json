@@ -38,6 +38,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
+    "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "https://github.com/webpack/file-loader.git#e308e9e06f3538d00feeddcfd943ead88d806258",
     "html-webpack-plugin": "^2.26.0",
