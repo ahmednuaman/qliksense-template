@@ -32,23 +32,21 @@ let config = {
   devtool: 'inline-source-map',
   module: {
     loaders: [{
-      test: /\.woff2?/,
-      loader: 'file?limit=1000&mimetype=application/font-woff&name=[name].[ext]'
-    }, {
-      test: /\.ttf/,
-      loader: 'file?limit=1000&mimetype=application/octet-stream&name=[name].[ext]'
-    }, {
-      test: /\.otf/,
-      loader: 'file?limit=1000&mimetype=application/octet-stream&name=[name].[ext]'
-    }, {
-      test: /\.eot/,
-      loader: 'file?limit=1000&mimetype=application/vnd.ms-fontobject&name=[name].[ext]'
-    }, {
-      test: /\.svg/,
-      loader: 'file?limit=1000&mimetype=image/svg+xml&name=[name].[ext]'
+      test: /\.woff2?$/,
+      loader: 'file',
+      query: {
+        limit: 1000,
+        mimetype: 'application/font-woff',
+        name: '[name].[ext]'
+      }
     }, {
       test: /img\/.+\.(jpg|png|gif|svg)$/,
-      loader: 'file?limit=1000&name=[name].[ext]!img?progressive=true'
+      loader: 'file!img',
+      query: {
+        limit: 1000,
+        progressive: true,
+        name: '[name].[ext]'
+      }
     }, {
       test: /\.pug$/,
       loader: 'pug',
@@ -91,9 +89,7 @@ let config = {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
-    new WebpackExtractTextPlugin('[name]', {
-      allChunks: true
-    }),
+    new WebpackExtractTextPlugin('[name]'),
     new WebpackHTMLPlugin({
       inject: false,
       hash: true,
