@@ -25,9 +25,11 @@ let config = {
     [`${PKG.name}.js`]: './js/app'
   },
   output: {
+    name: PKG.name,
     filename: '[name]',
     publicPath: '',
-    path: path.resolve(CWD, BUILD_DIR)
+    path: path.resolve(CWD, BUILD_DIR),
+    libraryTarget: 'amd'
   },
   devtool: 'inline-source-map',
   module: {
@@ -73,14 +75,19 @@ let config = {
   resolve: {
     extensions: ['', '.js', '.json', '.scss', '.pug', '.jpg', '.png', '.gif', '.svg'],
     alias: {
-      img: `${src}/img/`,
-      'js/qlik': `${src}/qlik/qlik`
+      img: `${src}/img/`
     }
   },
   externals: [{
-    'angular': true,
-    'jquery': true,
-    'qlik': true
+    'angular': {
+      amd: 'angular'
+    },
+    'jquery': {
+      amd: 'jquery'
+    },
+    'js/qlik': {
+      amd: '/resources/js/qlik.js'
+    }
   }],
   plugins: [
     new WebpackCleanPlugin([BUILD_DIR, ZIP_FILE]),
@@ -111,11 +118,11 @@ let config = {
 
 if (PRODUCTION) {
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   }
+    // }),
     new WebpackStatsWriterPlugin({
       filename: 'wbfolder.wbl',
       fields: null,
@@ -133,16 +140,16 @@ if (PRODUCTION) {
   config.plugins.push(
     new WebpackCopyPlugin([{
       from: '../qlik/qlik-styles.css',
-      to: 'asset/css/qlik-styles.css'
+      to: 'resources/css/qlik-styles.css'
     }, {
       from: '../qlik/qlikui.css',
-      to: 'asset/css/qlikui.css'
+      to: 'resources/css/qlikui.css'
     }, {
       from: '../qlik/client.css',
-      to: 'asset/css/client.css'
+      to: 'resources/css/client.css'
     }, {
       from: '../qlik/qlik.js',
-      to: 'asset/js/qlik.js'
+      to: 'resources/js/qlik.js'
     }])
   )
 }

@@ -1,3 +1,3 @@
-import qlik from 'expose?qlik!qlik'
+import qlik from 'js/qlik'
 
-console.log('Hello world!', qlik, window.qlik)
+console.log('Hello!', qlik, window.qlik)
