@@ -21,8 +21,9 @@ let config = {
   context: src,
   cache: true,
   entry: {
-    [`${PKG.name}.css`]: './scss/app',
-    [`${PKG.name}.js`]: ['./js/workbench', './js/app']
+    [`content/${PKG.name}/app.css`]: './scss/app',
+    [`content/${PKG.name}/app.js`]: './js/app',
+    [`${PKG.name}.js`]: './js/workbench'
   },
   output: {
     name: PKG.name,
@@ -98,8 +99,11 @@ let config = {
       template: 'pug/index',
       title: PKG.name,
       production: PRODUCTION,
-      css: `${PKG.name}.css`,
-      js: `${PKG.name}.js`
+      app: {
+        css: `content/${PKG.name}/app.css`,
+        js: `content/${PKG.name}/app.js`
+      },
+      wrapper: `${PKG.name}.js`
     }),
     new WebpackCopyPlugin([{
       from: '../qlik/template.qext',
