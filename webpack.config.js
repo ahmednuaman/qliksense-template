@@ -100,8 +100,8 @@ let config = {
       title: PKG.name,
       production: PRODUCTION,
       app: {
-        css: `content/${PKG.name}/app.css`,
-        js: `content/${PKG.name}/app.js`
+        css: `/content/${PKG.name}/app.css`,
+        js: `/content/${PKG.name}/app.js`
       },
       wrapper: `${PKG.name}.js`
     }),
