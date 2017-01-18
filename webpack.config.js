@@ -43,38 +43,6 @@ let config = {
         name: `/content/${PKG.name}/[name].[ext]`
       }
     }, {
-      test: /\.ttf/,
-      loader: 'file',
-      query: {
-        limit: 1000,
-        mimetype: 'application/octet-stream',
-        name: `/content/${PKG.name}/[name].[ext]`
-      }
-    }, {
-      test: /\.otf/,
-      loader: 'file',
-      query: {
-        limit: 1000,
-        mimetype: 'application/octet-stream',
-        name: `/content/${PKG.name}/[name].[ext]`
-      }
-    }, {
-      test: /\.eot/,
-      loader: 'file',
-      query: {
-        limit: 1000,
-        mimetype: 'application/vnd.ms-fontobject',
-        name: `/content/${PKG.name}/[name].[ext]`
-      }
-    }, {
-      test: /\.svg/,
-      loader: 'file',
-      query: {
-        limit: 1000,
-        mimetype: 'image/svg+xml',
-        name: `/content/${PKG.name}/[name].[ext]`
-      }
-    }, {
       test: /img\/.+\.(jpg|png|gif|svg)$/,
       loader: 'file!img',
       query: {
@@ -160,7 +128,10 @@ if (PRODUCTION) {
     new WebpackZipPlugin({
       filename: ZIP_FILE,
       pathPrefix: PKG.name,
-      exclude: /^\..*/
+      exclude: [
+        /^\..*/,
+        /content\//
+      ]
     })
   )
 
