@@ -3,3 +3,4 @@ import initQlik from './init-qlik'
 
 // Instantiate the Qlik components when you're ready
 initQlik()
+console.log('Hello!', qlik)

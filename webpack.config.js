@@ -35,12 +35,44 @@ let config = {
   devtool: 'inline-source-map',
   module: {
     loaders: [{
-      test: /\.woff2?$/,
+      test: /\.woff2?/,
       loader: 'file',
       query: {
         limit: 1000,
         mimetype: 'application/font-woff',
-        name: '[name].[ext]'
+        name: `/content/${PKG.name}/[name].[ext]`
+      }
+    }, {
+      test: /\.ttf/,
+      loader: 'file',
+      query: {
+        limit: 1000,
+        mimetype: 'application/octet-stream',
+        name: `/content/${PKG.name}/[name].[ext]`
+      }
+    }, {
+      test: /\.otf/,
+      loader: 'file',
+      query: {
+        limit: 1000,
+        mimetype: 'application/octet-stream',
+        name: `/content/${PKG.name}/[name].[ext]`
+      }
+    }, {
+      test: /\.eot/,
+      loader: 'file',
+      query: {
+        limit: 1000,
+        mimetype: 'application/vnd.ms-fontobject',
+        name: `/content/${PKG.name}/[name].[ext]`
+      }
+    }, {
+      test: /\.svg/,
+      loader: 'file',
+      query: {
+        limit: 1000,
+        mimetype: 'image/svg+xml',
+        name: `/content/${PKG.name}/[name].[ext]`
       }
     }, {
       test: /img\/.+\.(jpg|png|gif|svg)$/,
@@ -48,7 +80,7 @@ let config = {
       query: {
         limit: 1000,
         progressive: true,
-        name: '[name].[ext]'
+        name: `/content/${PKG.name}/[name].[ext]`
       }
     }, {
       test: /\.pug$/,
@@ -100,8 +132,8 @@ let config = {
       title: PKG.name,
       production: PRODUCTION,
       app: {
-        css: `/content/${PKG.name}/app.css`,
-        js: `/content/${PKG.name}/app.js`
+        css: `content/${PKG.name}/app.css`,
+        js: `content/${PKG.name}/app.js`
       },
       wrapper: `${PKG.name}.js`
     }),
