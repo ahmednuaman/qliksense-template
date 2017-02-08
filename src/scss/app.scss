@@ -1,14 +1,13 @@
-$bootstrap-sass-asset-helper: true;
-$web-font-path: './_font.scss';
+$fa-font-path: '~font-awesome/fonts';
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+$web-font-path: './_fonts.scss';
 
-@import '~bootswatch/lumen/variables';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import '~font-awesome/scss/font-awesome';
+
+@import './variables';
+@import '~bootswatch/paper/variables';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-@import '~bootswatch/lumen/bootswatch';
-
-body { 
-  padding-top: 70px; 
-}
+@import '~bootswatch/paper/bootswatch';
 
 a {
   cursor: pointer;

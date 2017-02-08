@@ -7,15 +7,18 @@
     "build": "concurrently \"npm test\" \"npm run webpack\"",
     "deploy": "cross-env NODE_ENV=\"production\" npm run build",
     "local": "concurrently \"npm run browser-sync\" \"npm run watch\"",
+    "sass-lint": "sass-lint 'src/scss/*.scss' -v -q",
+    "standard": "standard",
     "start": "npm run local",
-    "test": "standard",
-    "watch": "concurrently \"npm run webpack -- --watch -d\" \"npm run watch:lint\"",
-    "watch:lint": "onchange \"**/*.js\" \"qlik/index.html\" -- standard",
+    "test": "concurrently \"npm run standard\" \"npm run sass-lint\"",
+    "watch": "concurrently \"npm run webpack -- --watch -d\" \"npm run watch:js\" \"npm run watch:scss\"",
+    "watch:js": "onchange \"**/*.js\" \"qlik/index.html\" -- npm run standard",
+    "watch:scss": "onchange \"src/scss/*.scss\" -- npm run sass-lint",
     "webpack": "webpack --colors"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmednuaman/qliksense-template.git"
+    "url": "git+https://github.com/ahmednuaman/0212VF-qliksense-template.git"
   },
   "keywords": [
     "qliksense"
@@ -23,9 +26,9 @@
   "author": "Ahmed Nuaman (ahmed@ahmednuaman.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ahmednuaman/qliksense-template/issues"
+    "url": "https://github.com/ahmednuaman/0212VF-qliksense-template/issues"
   },
-  "homepage": "https://github.com/ahmednuaman/qliksense-template#readme",
+  "homepage": "https://github.com/ahmednuaman/0212VF-qliksense-template#readme",
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
@@ -40,7 +43,7 @@
     "css-loader": "^0.26.1",
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "https://github.com/webpack/file-loader.git#e308e9e06f3538d00feeddcfd943ead88d806258",
+    "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.26.0",
     "img-loader": "^1.3.1",
     "json-loader": "^0.5.4",
@@ -48,6 +51,7 @@
     "onchange": "^3.2.1",
     "pug": "^2.0.0-beta6",
     "pug-loader": "^2.3.0",
+    "sass-lint": "^1.10.2",
     "sass-loader": "^4.1.1",
     "standard": "^8.6.0",
     "style-loader": "^0.13.1",
@@ -68,17 +72,19 @@
   },
   "standard": {
     "ignore": [
-      "build"
+      "build",
+      "qlik/*.js"
     ]
   },
   "dependencies": {
     "angular": "^1.6.1",
+    "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "bootswatch": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "global": "^4.3.1",
     "jquery": "^3.1.1",
-    "pug-bootstrap": "^0.0.10",
-    "redux": "^3.6.0",
+    "lodash": "^4.17.4",
     "source-sans-pro": "^2.0.10"
   }
 }

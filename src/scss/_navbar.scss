@@ -1,0 +1,20 @@
+@import '~bootswatch/paper/variables';
+
+.navbar-brand {
+  pointer-events: none;
+
+  @media (max-width: $screen-xs-max) {
+    display: block;
+    float: none;
+    left: 50%;
+    padding: 0;
+    position: absolute;
+
+    > img {
+      display: inline;
+      margin-left: -25px;
+      margin-top: 7px;
+      width: 50px;
+    }
+  }
+}

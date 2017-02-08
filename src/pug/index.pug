@@ -1,14 +1,34 @@
-extends _base
-include ~pug-bootstrap/components/icons
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge,chrome=1')
+    meta(name='viewport' content='width=device-width initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0 user-scalable=no')
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name='mobile-web-app-capable' content='yes')
+    meta(name='theme-color' content='#eb0000')
+    meta(name='apple-mobile-web-app-status-bar-style' content='#eb0000')
+    meta(name='msapplication-navbutton-color' content='#eb0000')
+    meta(http-equiv='cleartype' content='on')
+    link(rel='stylesheet' href='/' + (htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.app.css].entry))
+    title #{htmlWebpackPlugin.options.title}
+  body
+    #body
 
-block menu
-  li
-    a(href='#') A link
+    script(src='/resources/assets/external/requirejs/require.js')
+    script.
+      const config = {
+        host: window.location.hostname,
+        prefix: '/',
+        port: window.location.port,
+        isSecure: window.location.protocol === 'https:'
+      }
 
-block body
-  .container
-    .row
-      .col-xs-12.col-md-6
-        #QV01.qvplaceholder
-      .col-xs-12.col-md-6
-        #QV02.qvplaceholder
+      require.config({
+        baseUrl: (config.isSecure ? 'https://' : 'http://') + config.host + (config.port ? ':' + config.port : '') + config.prefix + 'resources'
+      })
+
+      require([
+        '#{htmlWebpackPlugin.options.production ? '${name}.js' : htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.wrapper].entry}',
+        '/#{htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.app.js].entry}'
+      ])

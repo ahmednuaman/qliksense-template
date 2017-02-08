@@ -35,3 +35,13 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Qlik stuff
+qlik/qlik.js
+qlik/OpenLayers.js
+qlik/client.js
+qlik/common.js
+qlik/devhub.js
+qlik/engine.js
+qlik/product-info.js
+qlik/require.js

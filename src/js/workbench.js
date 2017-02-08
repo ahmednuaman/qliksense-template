@@ -1,5 +1,6 @@
-import qlik from 'js/qlik'
 import { window } from 'global'
+import qlik from 'js/qlik'
+import './qlik-extensions'
 
 // A workaround for webpack's underscore var prefixing
 window.qlik = qlik
@@ -11,5 +12,3 @@ window.initQlikComps = () => {
   // @preserve //get objects -- inserted here --
   // @preserve //create cubes and lists -- inserted here --
 }
-
-console.log(qlik)
