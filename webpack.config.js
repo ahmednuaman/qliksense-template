@@ -78,7 +78,7 @@ let config = {
     'js/qlik'
   ],
   plugins: [
-    new WebpackCleanPlugin([BUILD_DIR, ZIP_FILE]),
+    new WebpackCleanPlugin([BUILD_DIR]),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(ENV)
     }),
@@ -110,7 +110,9 @@ let config = {
 if (PRODUCTION) {
   const exclude = [
     /^\..*/,
-    /content\//
+    /\.zip/,
+    /content\//,
+    /resources\//
   ]
 
   config.plugins.push(
